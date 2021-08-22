@@ -1,1 +1,50 @@
-<p>for-country works!</p>
+<h2>For Country</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" (ngSubmit)="find()">
+            <input type="text" 
+                    name="termino"
+                    [(ngModel)]="termino"
+                    placeholder="Find country..."
+                    class="form-control">
+        </form>
+    </div>
+</div>
+<hr>
+
+<div *ngIf="isError" class="alert alert-danger">
+    No found term {{termino}}
+</div>
+
+<div class="row">
+    <div class="col">
+            <table *ngIf="!isError" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Flag</th>
+                        <th>Name</th>
+                        <th>Population</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of countries">
+                        <td></td>
+                        <td >
+                            <img draggable="false" 
+                                 class="small-flag"
+                                alt="🏴󠁧󠁢󠁥󠁮󠁧󠁿" 
+                                src="{{item.flag}}">
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.population}}</td>
+                        <td>
+                            <a href="/country/cri">ver.....</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
