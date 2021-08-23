@@ -6,6 +6,9 @@ import { ForCapitalComponent } from './pages/for-capital/for-capital.component';
 import { ForCountryComponent } from './pages/for-country/for-country.component';
 import { ForRegionComponent } from './pages/for-region/for-region.component';
 import { ViewCountryComponent } from './pages/view-country/view-country.component';
+import { RouterModule } from '@angular/router';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
 
 
 
@@ -15,7 +18,9 @@ import { ViewCountryComponent } from './pages/view-country/view-country.componen
     ForCapitalComponent,
     ForCountryComponent,
     ForRegionComponent,
-    ViewCountryComponent
+    ViewCountryComponent,
+    CountryTableComponent,
+    CountryInputComponent
   ],
   exports:[
     ForCapitalComponent,
@@ -25,7 +30,8 @@ import { ViewCountryComponent } from './pages/view-country/view-country.componen
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class CountriesModule { }

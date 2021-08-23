@@ -1,0 +1,8 @@
+<form autocomplete="off" (ngSubmit)="find()">
+    <input type="text" 
+            name="termino"
+            [(ngModel)]="termino"
+            (input)="pressKey()"
+            placeholder="Find country..."
+            class="form-control">
+</form>

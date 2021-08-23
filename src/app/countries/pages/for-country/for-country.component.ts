@@ -14,8 +14,9 @@ export class ForCountryComponent {
   termino: string ="";
   isError: boolean =false;
   countries: Country[]=[];
-  find(){
+  find( term: string){
     this.isError = false;
+    this.termino=term;
     this.countryService.findCountry(this.termino)
                         .subscribe(countries=>{
                           
@@ -24,10 +25,16 @@ export class ForCountryComponent {
                         },err=>{
                           this.isError=true;
                           console.log('Error');
-                          console.log(err);
+                          this.countries=[];
                         });
                           
   }
+  sug(term: string){
+    this.isError=false;
+    this.countries=[];
+  
+  }
+  
   constructor(private countryService: CountryService) {
 
    }
