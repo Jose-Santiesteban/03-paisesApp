@@ -6,6 +6,11 @@ import { Country } from '../../interfaces/country.interface';
   selector: 'app-for-country',
   templateUrl: './for-country.component.html',
   styles: [
+  `
+  li {
+    cursor: pointer; 
+  }
+  `
   ]
 })
 export class ForCountryComponent {
@@ -14,7 +19,11 @@ export class ForCountryComponent {
   termino: string ="";
   isError: boolean =false;
   countries: Country[]=[];
+  sugCountries: Country[]=[];
+  showSug: boolean = false;
+
   find( term: string){
+    this.showSug = false;
     this.isError = false;
     this.termino=term;
     this.countryService.findCountry(this.termino)
@@ -30,10 +39,18 @@ export class ForCountryComponent {
                           
   }
   sug(term: string){
-    this.isError=false;
-    this.countries=[];
-  
+    this.showSug=true;
+   this.isError=false;
+   this.termino=term;
+   this.countryService.findCountry(term)
+        .subscribe(resp=> this.sugCountries=resp.splice(0,5),
+        (err)=> this.sugCountries = []
+        );
+
+    
   }
+  
+  
   
   constructor(private countryService: CountryService) {
 
